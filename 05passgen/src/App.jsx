@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+
 
 
 function App() {
@@ -51,7 +50,7 @@ function App() {
       />
       <button
       onClick={copyPasswordToClipBorad}
-      className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
+      className='cursor-pointer hover:bg-sky-300 outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
       >copy</button>
       
   </div>
