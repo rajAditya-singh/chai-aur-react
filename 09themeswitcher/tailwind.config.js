@@ -6,7 +6,16 @@ export default {
   ],
   darkMode:"class",
   theme: {
-    extend: {},
+    extend: {
+      translate: {
+        '-50%': '-50%',
+      },
+      colors: {
+        customNavy: '#1e293b',
+        customSlate: '#262B40',
+        customSky: '#59b2f4',
+      },
+    },
   },
   plugins: [],
 }
