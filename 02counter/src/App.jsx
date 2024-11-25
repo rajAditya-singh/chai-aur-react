@@ -16,9 +16,9 @@ function App() {
         setCounter(Counter = 5)
       }
       else{
-        // setCounter(Counter+1)
+        setCounter(Counter+1)
        
-        setCounter((prevCounter)=> prevCounter+1)
+        // setCounter((prevCounter)=> prevCounter+1)
         
         // setCounter((prevCounter)=> prevCounter+1)
         
