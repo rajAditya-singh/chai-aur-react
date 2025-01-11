@@ -1,26 +1,25 @@
-import { useState, useEffect } from 'react'
-import {useDispatch} from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import './App.css'
 import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
+import { Footer, Header } from './components'
 import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     authService.getCurrentUser()
-    .then((userData)=>{
-        if (userData) {
-          dispatch(login({userData}))
-        } else {
-          dispatch(logout())
-        }
+    .then((userData) => {
+      if (userData) {
+        dispatch(login({userData}))
+      } else {
+        dispatch(logout())
+      }
     })
-    .finally(()=>setLoading(false))
+    .finally(() => setLoading(false))
   }, [])
   
   return !loading ? (
@@ -28,7 +27,7 @@ function App() {
       <div className='w-full block'>
         <Header />
         <main>
-          TODO: {/*<Outlet />*/}
+        TODO:  <Outlet />
         </main>
         <Footer />
       </div>

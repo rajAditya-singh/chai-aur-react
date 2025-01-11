@@ -11,48 +11,47 @@ export class AuthService {
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
-
+            
     }
 
-    async createAccount({ email, password, name }) {
+    async createAccount({email, password, name}) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
                 // call another method
-                return this.logIn({email, password});
+                return this.login({email, password});
             } else {
-                return userAccount;
+               return  userAccount;
             }
         } catch (error) {
             throw error;
         }
     }
 
-    async login ({email, password}){
+    async login({email, password}) {
         try {
-            return await this.account.createEmailSession(
-                email,
-                password
-            )
+            return await this.account.createEmailSession(email, password);
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 
-    async getCurrentUser(){
+    async getCurrentUser() {
         try {
-            await this.account.get();
+            return await this.account.get();
         } catch (error) {
-            console.log("Appwrite service :: getCurrentUser :: error", error);
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
-        return null
-    } 
 
-    async logout(){
+        return null;
+    }
+
+    async logout() {
+
         try {
-            await this.account.deleteSessions()
+            await this.account.deleteSessions();
         } catch (error) {
-            console.log("Appwrite service :: getCurrentUser :: error", error);
+            console.log("Appwrite serive :: logout :: error", error);
         }
     }
 }
@@ -60,4 +59,5 @@ export class AuthService {
 const authService = new AuthService();
 
 export default authService
+
 
